@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import './style.scss'
@@ -5,7 +6,7 @@ import './style.scss'
 import useFetch from '../../../hooks/useFetch'
 import { useSelector } from 'react-redux';
 import ContentWrapper from '../../../components/ContentWrapper/ContentWrapper';
-import Img from '../../../components/LazyLoding/Img'
+import Img from '../../../components/LazyLoading/Img'
 
 
 const HeroBanner = () => {
@@ -20,6 +21,7 @@ const HeroBanner = () => {
     const bg = url.backdrop + data?.results[Math.floor(Math.random() * 20)]?.backdrop_path;
     setBgImage(bg);
   
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
   
 
