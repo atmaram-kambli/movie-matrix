@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
@@ -22,6 +24,7 @@ function App() {
   
   useEffect(() => {
     fetchApiConfig();
+    genresCall();
   }, [])
 
   const fetchApiConfig = () => {
@@ -40,6 +43,28 @@ function App() {
       console.log(err)
     });
   }
+
+    const genresCall = async () => {
+      let promises = [];
+      let endPoint = ["tv", "movie"];
+      let allGenres = {};
+      endPoint.forEach((url) => {
+        promises.push(fetchDataFromAPI(`/genre/${url}/list`))
+      })
+
+      const data = await Promise.all(promises);
+      // console.log(data)
+      data?.map(({ genres }) => {
+        // console.log(genres)
+        return (genres.map((item) => {
+          allGenres[item.id] = item
+        }))
+      })
+      // console.log(allGenres)
+      dispatch(getGenres(allGenres));
+    }
+
+
 
   return (
     <>
