@@ -1,5 +1,4 @@
 import React from "react";
-
 import Carousel from "../../../components/Carousel/Carousel";
 import useFetch from "../../../hooks/useFetch";
 
@@ -13,7 +12,7 @@ const Recommendation = ({ mediaType, id }) => {
             title="Recommendations"
             data={data?.results}
             loading={loading}
-            endpoint={mediaType}
+            endPoint={mediaType}
         />
     );
 };
